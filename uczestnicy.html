@@ -50,6 +50,19 @@
         </div>
 
         <script>
+            function maskPII_surname(data) {
+                return data.slice(0, 1) + '*'.repeat(9);
+            }
+
+            function maskPII(data) {
+                // If it's an email, preserve the @ and domain part
+                if (data.includes('@')) {
+                    const [localPart, domain] = data.split('@');
+                    return localPart.slice(0, 3) + '*'.repeat(9) + '@' + domain;
+                }
+                return data.slice(0, 3) + '*'.repeat(6);
+            }
+
             function loadData() {
                 const data = JSON.parse(localStorage.getItem("formData")) || [];
 
@@ -69,10 +82,10 @@
                     const cell9 = row.insertCell(8);
 
                     cell1.textContent = item._name;
-                    cell2.textContent = item._surname;
+                    cell2.textContent = maskPII_surname(item._surname);
                     cell3.textContent = item._age;
-                    cell4.textContent = item._phone;
-                    cell5.textContent = item._email;
+                    cell4.textContent = maskPII(item._phone);
+                    cell5.textContent = maskPII(item._email);
                     cell6.textContent = item._sex;
                     if (Array.isArray(item._interests) && item._interests.length > 0) {
                         cell7.textContent = item._interests.join(", ");
