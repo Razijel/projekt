@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uczestnicy</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+    <header>
+        <h1>SnapSavvy</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="artykuły.html">Artykuły</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="rozkład.html">Rozkład</a></li>
+                <li><a href="formularz.html">Rejestracja</a></li>
+                <li><a href="uczestnicy.html" class="active">Uczestnicy</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="kontener-filtrowania">
+            <input type="text" id="filtrowanie" placeholder="Podaj imię lub przedmiot...">
+        </div>
+        <div class="kontener-tabeli">
+            <table id="uczestnicy-tabela">
+                <thead>
+                    <tr class="rainbow_gradient">
+                        <th id="imię-nagłówek" style="cursor: pointer;">Imię</th>
+                        <th id="nazwisko-nagłówek" style="cursor: pointer;">Nazwisko</th>
+                        <th id="wiek-nagłówek" style="cursor: pointer;">Wiek</th>
+                        <th id="telefon-nagłówek" style="cursor: pointer;">Telefon</th>
+                        <th id="email-nagłówek" style="cursor: pointer;">Email</th>
+                        <th id="płeć-nagłówek" style="cursor: pointer;">Płeć</th>
+                        <th id="zainteresowania-nagłówek" style="cursor: pointer;">Zainteresowania</th>
+                        <th id="przedmiot-nagłówek" style="cursor: pointer;">Przedmiot</th>
+                        <th id="godzina-nagłówek" style="cursor: pointer;">Godzina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Printing table rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            function loadData() {
+                const data = JSON.parse(localStorage.getItem("formData")) || [];
+
+                const tableBody = document.getElementById("uczestnicy-tabela").getElementsByTagName("tbody")[0];
+                tableBody.innerHTML = '';
+
+                data.forEach(item => {
+                    const row = tableBody.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    const cell3 = row.insertCell(2);
+                    const cell4 = row.insertCell(3);
+                    const cell5 = row.insertCell(4);
+                    const cell6 = row.insertCell(5);
+                    const cell7 = row.insertCell(6);
+                    const cell8 = row.insertCell(7);
+                    const cell9 = row.insertCell(8);
+
+                    cell1.textContent = item._name;
+                    cell2.textContent = item._surname;
+                    cell3.textContent = item._age;
+                    cell4.textContent = item._phone;
+                    cell5.textContent = item._email;
+                    cell6.textContent = item._sex;
+                    if (Array.isArray(item._interests) && item._interests.length > 0) {
+                        cell7.textContent = item._interests.join(", ");
+                    } else {
+                        cell7.textContent = "Brak";
+                    }
+                    cell8.textContent = item._subject;
+                    cell9.textContent = item._hour;
+                });
+            }
+
+            let lastSortedColumn = -1;  // Track the last sorted column index
+            let lastSortOrder = 'asc';  // Track the last sort order
+
+            function sortTable(columnIndex, isNumeric = false) {
+                const table = document.getElementById("uczestnicy-tabela");
+                const rows = Array.from(table.rows).slice(1); // Skip the header row
+                let compareFunction;
+
+                // Reverse the sort order if the same column is clicked again
+                if (lastSortedColumn === columnIndex) {
+                    lastSortOrder = lastSortOrder === 'asc' ? 'desc' : 'asc';  // Toggle sort order
+                } else {
+                    lastSortOrder = 'asc';  // Default to ascending order for new column
+                }
+
+                // Remove sort classes from all headers
+                document.querySelectorAll('th').forEach(th => {
+                    th.classList.remove('sorted-asc', 'sorted-desc');
+                });
+
+                // Add the correct sort class to the clicked header
+                let header;
+                switch (columnIndex) {
+                    case 0:
+                        header = document.getElementById("imię-nagłówek");
+                        break;
+                    case 1:
+                        header = document.getElementById("nazwisko-nagłówek");
+                        break;
+                    case 2:
+                        header = document.getElementById("wiek-nagłówek");
+                        break;
+                    case 3:
+                        header = document.getElementById("telefon-nagłówek");
+                        break;
+                    case 4:
+                        header = document.getElementById("email-nagłówek");
+                        break;
+                    case 5:
+                        header = document.getElementById("płeć-nagłówek");
+                        break;
+                    case 6:
+                        header = document.getElementById("zainteresowania-nagłówek");
+                        break;
+                    case 7:
+                        header = document.getElementById("przedmiot-nagłówek");
+                        break;
+                    case 8:
+                        header = document.getElementById("godzina-nagłówek");
+                        break;
+                    default:
+                        return;
+                }
+
+                if (lastSortOrder === 'asc') {
+                    header.classList.add('sorted-asc');
+                } else {
+                    header.classList.add('sorted-desc');
+                }
+
+                // Determine sorting function based on type and direction
+                if (isNumeric) {
+                    compareFunction = (a, b) => {
+                        const numA = parseFloat(a.cells[columnIndex].textContent);
+                        const numB = parseFloat(b.cells[columnIndex].textContent);
+                        return lastSortOrder === 'asc' ? numA - numB : numB - numA;
+                    };
+                } else {
+                    compareFunction = (a, b) => {
+                        const textA = a.cells[columnIndex].textContent.toLowerCase();
+                        const textB = b.cells[columnIndex].textContent.toLowerCase();
+                        return lastSortOrder === 'asc' ? textA.localeCompare(textB) : textB.localeCompare(textA);
+                    };
+                }
+                const sortedRows = rows.sort(compareFunction);
+
+                // Append the sorted rows back into the table
+                sortedRows.forEach(row => table.appendChild(row));
+
+                // Update the last sorted column
+                lastSortedColumn = columnIndex;
+            }
+
+            document.getElementById("imię-nagłówek").addEventListener("click", function () { sortTable(0) });
+            document.getElementById("nazwisko-nagłówek").addEventListener("click", function () { sortTable(1) });
+            document.getElementById("wiek-nagłówek").addEventListener("click", function () { sortTable(2, true) });
+            document.getElementById("telefon-nagłówek").addEventListener("click", function () { sortTable(3) });
+            document.getElementById("email-nagłówek").addEventListener("click", function () { sortTable(4) });
+            document.getElementById("płeć-nagłówek").addEventListener("click", function () { sortTable(5) });
+            document.getElementById("zainteresowania-nagłówek").addEventListener("click", function () { sortTable(6) });
+            document.getElementById("przedmiot-nagłówek").addEventListener("click", function () { sortTable(7) });
+            document.getElementById("godzina-nagłówek").addEventListener("click", function () { sortTable(8, true) });
+
+            // Add a search box to filter rows by name
+            document.getElementById("filtrowanie").addEventListener("input", function () {
+                const filterText = this.value.toLowerCase();
+                const rows = document.getElementById("uczestnicy-tabela").rows;
+
+                Array.from(rows).forEach((row, index) => {
+                    if (index === 0) return;  // Skip the header row
+
+                    let isMatch = false;
+
+                    // Iterate over each cell in the row
+                    for (let i = 0; i < row.cells.length; i++) {
+                        const cellText = row.cells[i].textContent.toLowerCase();
+                        if (cellText.includes(filterText)) {
+                            isMatch = true;  // If any cell matches, mark this row as a match
+                            break;  // No need to check further columns for this row
+                        }
+                    }
+
+                    // Show or hide the row based on the match
+                    if (isMatch) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+
+            window.addEventListener("load", loadData);
+
+        </script>
+    </main>
+    <footer>&#169 Wszystkie prawa zastrzeżone</footer>
+</body>
+
+</html>

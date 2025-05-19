@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejestracja</title>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+  <header>
+    <h1>SnapSavvy</h1>
+    <nav>
+      <ul>
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="artykuły.html">Artykuły</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="rozkład.html">Rozkład</a></li>
+          <li><a href="formularz.html" class="active">Rejestracja</a></li>
+          <li><a href="uczestnicy.html">Uczestnicy</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+      </ul>
+  </nav>
+  </header>
+
+  <main>
+    <h2>Rejestracja na zajęcia</h2>
+    <form id="formularz">
+      <fieldset>
+        <legend>Podstawowe informacje</legend>
+
+        <label for="imię">Imię:</label>
+        <input type="text" name="imię" id="imię" placeholder="Jan" required><br>
+
+        <label for="nazwisko">Nazwisko:</label>
+        <input type="text" name="nazwisko" id="nazwisko" placeholder="Kowalski" required><br>
+
+        <label for="wiek">Wiek:</label>
+        <input type="number" name="wiek" id="wiek" min="18" required><br>
+
+        <label for="telefon">Numer telefonu:</label>
+        <input type="tel" name="telefon" id="telefon" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
+          required><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dane logowania</legend>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="jan.kowalski@example.com" required><br>
+
+        <label for="hasło">Hasło:</label>
+        <input type="password" name="hasło" id="hasło" required><br>
+
+        <label for="powtórz_hasło">Powtórz hasło:</label>
+        <input type="password" name="powtórz_hasło" id="powtórz_hasło" required><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Płeć</legend>
+
+        <input type="radio" name="płeć" id="Mężczyzna" value="Mężczyzna" checked>
+        <label for="Mężczyzna">Mężczyzna</label><br>
+
+        <input type="radio" name="płeć" id="Kobieta" value="Kobieta">
+        <label for="Kobieta">Kobieta</label><br>
+
+        <input type="radio" name="płeć" id="Inna" value="Inna">
+        <label for="Inna">Inna</label><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Zainteresowania</legend>
+
+        <input type="checkbox" name="zainteresowania" id="Inżynieria oprogramowania" value="Inżynieria oprogramowania">
+        <label for="Inżynieria oprogramowania">Inżynieria oprogramowania.</label><br>
+
+        <input type="checkbox" name="zainteresowania" id="Sztuczna inteligencja" value="Sztuczna inteligencja">
+        <label for="Sztuczna inteligencja">Sztuczna inteligencja.</label><br>
+
+        <input type="checkbox" name="zainteresowania" id="Pisanie aplikacji WWW" value="Pisanie aplikacji WWW">
+        <label for="Pisanie aplikacji WWW">Pisanie aplikacji WWW.</label>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Deklaracja przedmiotu i godziny</legend>
+
+        <label for="przedmiot">Przedmiot:</label>
+        <select name="przedmiot" id="przedmiot">
+          <option>Inżynieria oprogramowania</option>
+          <option>Sztuczna inteligencja</option>
+          <option>Pisanie aplikacji WWW</option>
+        </select><br>
+
+        <label for="godzina">Godzina:</label>
+        <select name="godzina" id="godzina">
+          <option>8:30-10:00</option>
+          <option>10:15-11:45</option>
+          <option>12:00-13:30</option>
+          <option>14:00-15:30</option>
+          <option>16:00-17:30</option>
+        </select><br>
+      </fieldset>
+
+      <label for="Informacje">Dodatkowe informacje dla organizatora (opcjonalnie)</label><br>
+      <textarea id="Informacje" name="Informacje" rows="10" cols="50"></textarea><br>
+
+      <fieldset>
+        <legend>Akceptacja warunków</legend>
+
+        <input type="checkbox" name="Przetwarzanie danych" id="Przetwarzanie danych" value="Przetwarzanie danych"
+          required>
+        <label for="Przetwarzanie danych">Zgadzam się na przetwarzanie moich danych w celu rejestracji na dane zajęcia.
+          (wymagane)</label><br>
+
+        <input type="checkbox" name="Oferty oraz promocje" id="Oferty oraz promocje" value="Oferty oraz promocje"
+          optional>
+        <label for="Oferty oraz promocje">Zgadzam się na otrzymywanie na podany adres email ofert oraz promocji od
+          naszych
+          sponsorów. (opcjonalne)</label><br>
+      </fieldset>
+
+      <button type="submit">Wyślij</button>
+    </form>
+    <script>
+      document.getElementById("formularz").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const _name = document.getElementById("imię").value;
+        const _surname = document.getElementById("nazwisko").value;
+        const _age = document.getElementById("wiek").value;
+        const _phone = document.getElementById("telefon").value;
+        const _email = document.getElementById("email").value;
+        const _sex = document.querySelector('input[name="płeć"]:checked')?.value;
+        const _interests = [];
+        document.querySelectorAll('input[name="zainteresowania"]:checked').forEach((checkbox) => {
+          _interests.push(checkbox.value);
+        });
+        const _subject = document.getElementById('przedmiot').value;
+        const _hour = document.getElementById('godzina').value;
+
+        // Get current data from localStorage or initialize as an empty array
+        let data = JSON.parse(localStorage.getItem("formData")) || [];
+
+        // Add new data to the array
+        data.push({ _name, _surname, _age, _phone, _email, _sex, _interests, _subject, _hour });
+
+        // Save the updated data back to localStorage
+        localStorage.setItem("formData", JSON.stringify(data));
+
+        // Reset the form
+        document.getElementById("formularz").reset();
+
+        if (window.location.pathname.includes("uczestnicy.html")) {
+          loadData();
+        }
+      });
+    </script>
+  </main>
+  <footer>&#169 Wszystkie prawa zastrzeżone</footer>
+</body>
+
+</html>

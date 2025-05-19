@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artykuły</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <h1 id="gora">SnapSavvy</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona główna</a></li>
+                <li><a href="artykuły.html" class="active">Artykuły</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="rozkład.html">Rozkład</a></li>
+                <li><a href="formularz.html">Rejestracja</a></li>
+                <li><a href="uczestnicy.html">Uczestnicy</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Spis treści</h2>
+        <nav class="pointed">
+            <ul class="pointed">
+                <li><a href="#artykul1">Stosowanie headerów</a></li>
+                <li><a href="#artykul2">Przewijanie do konkretnego miejsca artykułu</a></li>
+                <li><a href="#artykul3">Testowanie układu strony oraz tekstu</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2 id="artykul1">Stosowanie headerów</h2>
+            <p class="small">Utworzono <time datetime="2025-03-14 09:00"><i class="fa fa-clock"></i>14-03-2025
+                    09:00</time></p>
+            <p>Przeważnie tylko jeden h1 na dokument. Następnie według hierarchii użycie kolejnych poziomów od h2 do h6,
+                np.</p>
+            <code><pre>
+            &lt;h1&gt;Header 1&lt;&sol;h1&gt;
+                &lt;h2&gt;Header 2&lt;&sol;h2&gt;
+                    &lt;h3&gt;Header 3&lt;&sol;h3&gt;
+                &lt;h2&gt;Header 2&lt;&sol;h2&gt;
+                    &lt;h3&gt;Header 3&lt;&sol;h3&gt;
+            </pre></code>
+            <a class="return-link" href="#gora">Wróć</a>
+        </article>
+
+        <article>
+            <h2 id="artykul2">Przewijanie do konkretnego miejsca artykułu</h2>
+            <p class="small">Utworzono <time datetime="2025-03-14 09:20"><i class="fa fa-clock"></i>14-03-2025
+                    09:20</time></p>
+            <p>Możemy przewijać stronę za pomocą href oraz wskazania fragmentu strony poprzez id</p>
+            <code><pre>
+            <p>
+                &lt;h1&gt;id="gora">Nagłówek1&lt;&sol;h1&gt;
+                &lt;p&gt;treść...&lt;&sol;p&gt;
+                &lt;p&gt;treść...&lt;&sol;p&gt;
+                &lt;p&gt;treść...&lt;&sol;p&gt;
+                &lt;a&gt; href="#gora">Wróć&lt;&sol;a&gt;
+            </p>
+            </pre></code>
+            <a class="return-link" href="#gora">Wróć</a>
+        </article>
+
+        <article>
+            <h2 id="artykul3">Testowanie układu strony oraz tekstu</h2>
+            <p class="small">Utworzono <time datetime="2025-03-14 09:40"><i class="fa fa-clock"></i>14-03-2025
+                    09:40</time></p>
+            <p>Możemy uzupełnić stronę za pomocą tekstu lorem ipsum</p>
+            <section>
+                <h3>Sekcja 1</h3>
+                <em>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum nibh sit amet ligula rutrum
+                    maximus. Maecenas et laoreet ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                    posuere cubilia curae; Nunc viverra orci est, id vehicula orci lobortis a. Nullam rutrum erat in
+                    massa blandit pharetra. Vestibulum eleifend, nunc nec dapibus faucibus, elit sem condimentum odio, a
+                    dapibus urna ex ac sapien. Sed ut tellus sed mauris sodales hendrerit. Nullam efficitur rhoncus mi a
+                    congue. Donec laoreet erat sit amet lacus pretium, ac sollicitudin sapien tristique. Cras vitae eros
+                    a sapien molestie ullamcorper. Vestibulum luctus metus tempus purus ullamcorper, ut mollis lorem
+                    iaculis. Proin eu bibendum sem, eget pharetra nisi. Etiam magna ipsum, ornare in purus sit amet,
+                    aliquam tincidunt enim. In vel arcu nisi. Curabitur dapibus id neque ac congue.
+
+                    In hac habitasse platea dictumst. Sed erat magna, lobortis bibendum orci ac, faucibus ultrices
+                    purus. Proin faucibus feugiat dictum. Maecenas leo elit, interdum id fermentum id, aliquet eu risus.
+                    Sed pretium interdum sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes,
+                    nascetur ridiculus mus. Quisque et hendrerit neque. Sed in ultrices odio. Duis tincidunt nec augue
+                    nec fermentum. Integer sodales malesuada nisl non commodo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus. Mauris dignissim dui id tellus eleifend, dapibus convallis lacus lacinia. Mauris
+                    augue nibh, laoreet id mi laoreet, accumsan sollicitudin elit. Praesent sagittis dignissim
+                    imperdiet. Donec tortor lectus, venenatis non pharetra dapibus, mollis vitae ante.
+
+                    Proin purus eros, tincidunt eu felis a, varius vestibulum est. Etiam laoreet eget magna ac
+                    scelerisque. Donec dui magna, egestas a tortor ac, congue tempus libero. Nulla condimentum fringilla
+                    diam, sed condimentum diam facilisis varius. Aliquam sollicitudin, orci in tincidunt dignissim, orci
+                    nibh semper nunc, ut molestie elit urna at odio. Quisque ipsum sem, elementum id ipsum sed,
+                    fringilla faucibus lacus. Duis tellus erat, luctus vel nisl a, viverra semper diam. Donec consequat
+                    pretium sodales. Etiam malesuada pretium diam ut porta. In et accumsan ante, fringilla eleifend
+                    massa. Vivamus egestas elementum leo et lacinia. Quisque felis tortor, semper et nibh in, tincidunt
+                    efficitur augue. Phasellus lacinia ante ut orci eleifend aliquet.
+
+                    Etiam hendrerit vel erat nec faucibus. In facilisis nisl ac fermentum porta. Aliquam eleifend ante
+                    odio, a ultrices nulla condimentum quis. Morbi elit libero, tempor quis augue vitae, sollicitudin
+                    ultrices nunc. Suspendisse in tortor sit amet enim mollis facilisis a quis lacus. Duis eleifend
+                    congue mauris, et bibendum diam maximus eget. Suspendisse potenti. Morbi bibendum est quis sapien
+                    cursus dignissim.
+
+                    Aenean viverra et turpis ut efficitur. Donec fermentum laoreet erat ut ultrices. Sed mollis enim sed
+                    mi lacinia, vel volutpat elit accumsan. Curabitur suscipit eleifend justo eu ultricies. Etiam
+                    fringilla molestie lacus, non rhoncus libero tempor quis. Etiam aliquam quam nec augue faucibus,
+                    vitae ullamcorper erat tincidunt. Aliquam erat volutpat. Mauris pretium, mauris ac malesuada
+                    tincidunt, elit metus interdum eros, quis elementum ante ligula eu velit. Nullam bibendum massa id
+                    nisl luctus, nec eleifend leo ultricies.
+                </em>
+            </section>
+            <section>
+                <h3>Sekcja 2</h3>
+                <em>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum nibh sit amet ligula rutrum
+                    maximus. Maecenas et laoreet ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                    posuere cubilia curae; Nunc viverra orci est, id vehicula orci lobortis a. Nullam rutrum erat in
+                    massa blandit pharetra. Vestibulum eleifend, nunc nec dapibus faucibus, elit sem condimentum odio, a
+                    dapibus urna ex ac sapien. Sed ut tellus sed mauris sodales hendrerit. Nullam efficitur rhoncus mi a
+                    congue. Donec laoreet erat sit amet lacus pretium, ac sollicitudin sapien tristique. Cras vitae eros
+                    a sapien molestie ullamcorper. Vestibulum luctus metus tempus purus ullamcorper, ut mollis lorem
+                    iaculis. Proin eu bibendum sem, eget pharetra nisi. Etiam magna ipsum, ornare in purus sit amet,
+                    aliquam tincidunt enim. In vel arcu nisi. Curabitur dapibus id neque ac congue.
+
+                    In hac habitasse platea dictumst. Sed erat magna, lobortis bibendum orci ac, faucibus ultrices
+                    purus. Proin faucibus feugiat dictum. Maecenas leo elit, interdum id fermentum id, aliquet eu risus.
+                    Sed pretium interdum sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes,
+                    nascetur ridiculus mus. Quisque et hendrerit neque. Sed in ultrices odio. Duis tincidunt nec augue
+                    nec fermentum. Integer sodales malesuada nisl non commodo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus. Mauris dignissim dui id tellus eleifend, dapibus convallis lacus lacinia. Mauris
+                    augue nibh, laoreet id mi laoreet, accumsan sollicitudin elit. Praesent sagittis dignissim
+                    imperdiet. Donec tortor lectus, venenatis non pharetra dapibus, mollis vitae ante.
+
+                    Proin purus eros, tincidunt eu felis a, varius vestibulum est. Etiam laoreet eget magna ac
+                    scelerisque. Donec dui magna, egestas a tortor ac, congue tempus libero. Nulla condimentum fringilla
+                    diam, sed condimentum diam facilisis varius. Aliquam sollicitudin, orci in tincidunt dignissim, orci
+                    nibh semper nunc, ut molestie elit urna at odio. Quisque ipsum sem, elementum id ipsum sed,
+                    fringilla faucibus lacus. Duis tellus erat, luctus vel nisl a, viverra semper diam. Donec consequat
+                    pretium sodales. Etiam malesuada pretium diam ut porta. In et accumsan ante, fringilla eleifend
+                    massa. Vivamus egestas elementum leo et lacinia. Quisque felis tortor, semper et nibh in, tincidunt
+                    efficitur augue. Phasellus lacinia ante ut orci eleifend aliquet.
+
+                    Etiam hendrerit vel erat nec faucibus. In facilisis nisl ac fermentum porta. Aliquam eleifend ante
+                    odio, a ultrices nulla condimentum quis. Morbi elit libero, tempor quis augue vitae, sollicitudin
+                    ultrices nunc. Suspendisse in tortor sit amet enim mollis facilisis a quis lacus. Duis eleifend
+                    congue mauris, et bibendum diam maximus eget. Suspendisse potenti. Morbi bibendum est quis sapien
+                    cursus dignissim.
+
+                    Aenean viverra et turpis ut efficitur. Donec fermentum laoreet erat ut ultrices. Sed mollis enim sed
+                    mi lacinia, vel volutpat elit accumsan. Curabitur suscipit eleifend justo eu ultricies. Etiam
+                    fringilla molestie lacus, non rhoncus libero tempor quis. Etiam aliquam quam nec augue faucibus,
+                    vitae ullamcorper erat tincidunt. Aliquam erat volutpat. Mauris pretium, mauris ac malesuada
+                    tincidunt, elit metus interdum eros, quis elementum ante ligula eu velit. Nullam bibendum massa id
+                    nisl luctus, nec eleifend leo ultricies.
+                </em>
+            </section>
+            <section>
+                <h3>Sekcja 3</h3>
+                <em>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum nibh sit amet ligula rutrum
+                    maximus. Maecenas et laoreet ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                    posuere cubilia curae; Nunc viverra orci est, id vehicula orci lobortis a. Nullam rutrum erat in
+                    massa blandit pharetra. Vestibulum eleifend, nunc nec dapibus faucibus, elit sem condimentum odio, a
+                    dapibus urna ex ac sapien. Sed ut tellus sed mauris sodales hendrerit. Nullam efficitur rhoncus mi a
+                    congue. Donec laoreet erat sit amet lacus pretium, ac sollicitudin sapien tristique. Cras vitae eros
+                    a sapien molestie ullamcorper. Vestibulum luctus metus tempus purus ullamcorper, ut mollis lorem
+                    iaculis. Proin eu bibendum sem, eget pharetra nisi. Etiam magna ipsum, ornare in purus sit amet,
+                    aliquam tincidunt enim. In vel arcu nisi. Curabitur dapibus id neque ac congue.
+
+                    In hac habitasse platea dictumst. Sed erat magna, lobortis bibendum orci ac, faucibus ultrices
+                    purus. Proin faucibus feugiat dictum. Maecenas leo elit, interdum id fermentum id, aliquet eu risus.
+                    Sed pretium interdum sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes,
+                    nascetur ridiculus mus. Quisque et hendrerit neque. Sed in ultrices odio. Duis tincidunt nec augue
+                    nec fermentum. Integer sodales malesuada nisl non commodo. Interdum et malesuada fames ac ante ipsum
+                    primis in faucibus. Mauris dignissim dui id tellus eleifend, dapibus convallis lacus lacinia. Mauris
+                    augue nibh, laoreet id mi laoreet, accumsan sollicitudin elit. Praesent sagittis dignissim
+                    imperdiet. Donec tortor lectus, venenatis non pharetra dapibus, mollis vitae ante.
+
+                    Proin purus eros, tincidunt eu felis a, varius vestibulum est. Etiam laoreet eget magna ac
+                    scelerisque. Donec dui magna, egestas a tortor ac, congue tempus libero. Nulla condimentum fringilla
+                    diam, sed condimentum diam facilisis varius. Aliquam sollicitudin, orci in tincidunt dignissim, orci
+                    nibh semper nunc, ut molestie elit urna at odio. Quisque ipsum sem, elementum id ipsum sed,
+                    fringilla faucibus lacus. Duis tellus erat, luctus vel nisl a, viverra semper diam. Donec consequat
+                    pretium sodales. Etiam malesuada pretium diam ut porta. In et accumsan ante, fringilla eleifend
+                    massa. Vivamus egestas elementum leo et lacinia. Quisque felis tortor, semper et nibh in, tincidunt
+                    efficitur augue. Phasellus lacinia ante ut orci eleifend aliquet.
+
+                    Etiam hendrerit vel erat nec faucibus. In facilisis nisl ac fermentum porta. Aliquam eleifend ante
+                    odio, a ultrices nulla condimentum quis. Morbi elit libero, tempor quis augue vitae, sollicitudin
+                    ultrices nunc. Suspendisse in tortor sit amet enim mollis facilisis a quis lacus. Duis eleifend
+                    congue mauris, et bibendum diam maximus eget. Suspendisse potenti. Morbi bibendum est quis sapien
+                    cursus dignissim.
+
+                    Aenean viverra et turpis ut efficitur. Donec fermentum laoreet erat ut ultrices. Sed mollis enim sed
+                    mi lacinia, vel volutpat elit accumsan. Curabitur suscipit eleifend justo eu ultricies. Etiam
+                    fringilla molestie lacus, non rhoncus libero tempor quis. Etiam aliquam quam nec augue faucibus,
+                    vitae ullamcorper erat tincidunt. Aliquam erat volutpat. Mauris pretium, mauris ac malesuada
+                    tincidunt, elit metus interdum eros, quis elementum ante ligula eu velit. Nullam bibendum massa id
+                    nisl luctus, nec eleifend leo ultricies.
+                </em>
+            </section>
+            <a class="return-link" href="#gora">Wróć</a>
+        </article>
+    </main>
+    <footer>&#169 Wszystkie prawa zastrzeżone</footer>
+</body>
+
+</html>
