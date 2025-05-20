@@ -11,14 +11,17 @@
 :root {
     color-scheme: light dark;
 }
+
 /* *************************************************************************** */
 /* ********************* Adding flexbox to the page ************************** */
 /* *************************************************************************** */
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 main {
@@ -33,7 +36,7 @@ body {
     font-size: 1em;
     line-height: 1.6;
     color: light-dark(#292524, #f5f5f4);
-    background-color: light-dark(#f5f5f4, #292524);
+    /*background-color: light-dark(#f5f5f4, #292524);*/
     max-width: 0 auto;
     margin: 0 auto;
 }
@@ -117,7 +120,8 @@ nav ul.pointed {
     display: block;
 }
 
-nav ul.pointed li, section ul.pointed li {
+nav ul.pointed li,
+section ul.pointed li {
     display: list-item;
     margin-bottom: 0px;
     list-style-type: disc;
@@ -223,7 +227,12 @@ label {
     display: inline-block;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"], textarea {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea {
     width: 100%;
     max-width: 100%;
     padding: 10px;
@@ -251,11 +260,13 @@ button:hover {
     background-color: #45a049;
 }
 
-input:required, textarea:required {
+input:required,
+textarea:required {
     border-color: #FF6347;
 }
 
-input:invalid, textarea:invalid {
+input:invalid,
+textarea:invalid {
     border-color: #FF6347;
 }
 
@@ -272,7 +283,8 @@ fieldset {
     background-color: light-dark(#f5f5f4, #292524);
 }
 
-fieldset input[type="checkbox"], fieldset label {
+fieldset input[type="checkbox"],
+fieldset label {
     display: inline-flex;
     align-items: flex-start;
 }
@@ -303,7 +315,8 @@ details {
 }
 
 details p {
-    margin-top: 5px;;
+    margin-top: 5px;
+    ;
     margin-left: 20px;
     font-size: 1.1em;
     color: light-dark(#292524, #f5f5f4);
@@ -344,10 +357,12 @@ figure {
     width: 100%;
 }
 
-figure img, iframe {
+figure img,
+iframe {
     width: 100%;
     height: 300px;
-    object-fit: cover; /* Covers picture a bit but prevents squishing - ensuring aspect ratio */
+    object-fit: cover;
+    /* Covers picture a bit but prevents squishing - ensuring aspect ratio */
 }
 
 figcaption {
@@ -374,8 +389,10 @@ figcaption:hover {
     color: light-dark(#f5f5f4, #292524);
     background-color: light-dark(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.6));
     z-index: 2;
-    white-space: normal;  /* Allow text to wrap */
-    text-overflow: clip;  /* Remove ellipsis on hover */
+    white-space: normal;
+    /* Allow text to wrap */
+    text-overflow: clip;
+    /* Remove ellipsis on hover */
 }
 
 /* *************************************************************************** */
@@ -386,7 +403,7 @@ figcaption:hover {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-  
+
 @media (max-width: 480px) {
     .grid-layout {
         grid-template-columns: 1fr;
@@ -410,7 +427,8 @@ table {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-td, th {
+td,
+th {
     padding: 0.5em 1em;
     text-align: left;
 }
@@ -428,11 +446,13 @@ tbody tr:hover {
 }
 
 tbody tr {
-    border-bottom: thin #bbb solid; /* Lines between rows */
+    border-bottom: thin #bbb solid;
+    /* Lines between rows */
 }
 
 tbody tr:last-child {
-    border-bottom: none; /* Lack of line after the last row */
+    border-bottom: none;
+    /* Lack of line after the last row */
 }
 
 .rainbow_gradient {
@@ -503,8 +523,10 @@ time i {
 /* *************************************************************************** */
 /* ****************** Contacts (site and email) styling ********************** */
 /* *************************************************************************** */
-.contacts a:link,        /* Unvisited links */
-.contacts a:visited {    /* Visited links */
+.contacts a:link,
+/* Unvisited links */
+.contacts a:visited {
+    /* Visited links */
     color: #0073e6;
     text-decoration: none;
 }
@@ -534,6 +556,7 @@ input:focus {
 th.sorted-asc::after {
     content: "↑";
 }
+
 th.sorted-desc::after {
     content: "↓";
 }
@@ -550,4 +573,37 @@ th.sorted-desc::after {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+}
+
+/* *************************************************************************** */
+/* ************************ Success pop-up styling *************************** */
+/* *************************************************************************** */
+#success-popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+
+/* *************************************************************************** */
+/* *********************** Background image styling ************************** */
+/* *************************************************************************** */
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    min-height: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
 }

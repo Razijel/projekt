@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rejestracja</title>
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <script src="scripts.js"></script>
 </head>
 
 <body>
@@ -13,19 +14,20 @@
     <h1>SnapSavvy</h1>
     <nav>
       <ul>
-          <li><a href="index.html">Strona główna</a></li>
-          <li><a href="artykuły.html">Artykuły</a></li>
-          <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="rozkład.html">Rozkład</a></li>
-          <li><a href="formularz.html" class="active">Rejestracja</a></li>
-          <li><a href="uczestnicy.html">Uczestnicy</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-          <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="artykuły.html">Artykuły</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="rozkład.html">Rozkład</a></li>
+        <li><a href="formularz.html" class="active">Rejestracja</a></li>
+        <li><a href="uczestnicy.html">Uczestnicy</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
       </ul>
-  </nav>
+    </nav>
   </header>
 
   <main>
+    <div id="background"></div>
     <h2>Rejestracja na zajęcia</h2>
     <form id="formularz">
       <fieldset>
@@ -125,6 +127,9 @@
 
       <button type="submit">Wyślij</button>
     </form>
+    
+    <div id="success-popup">Formularz został wysłany poprawnie!</div>
+
     <script>
       document.getElementById("formularz").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -157,6 +162,12 @@
         if (window.location.pathname.includes("uczestnicy.html")) {
           loadData();
         }
+
+        const successPopup = document.getElementById("success-popup");
+        successPopup.style.display = "block";
+        setTimeout(() => {
+          successPopup.style.display = "none";
+        }, 5000);
       });
     </script>
   </main>
