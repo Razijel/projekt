@@ -46,8 +46,49 @@ document.addEventListener("DOMContentLoaded", () => {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         updateBackgroundImage();
     });
+    console.log("Background is loaded!");
 });
 
+if (window.location.pathname === "formularz.html" && document.querySelector("#formularz") !== null) {
 
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("formularz").addEventListener("submit", function (e) {
+            e.preventDefault();
 
-console.log("JavaScript is loaded!");
+            const _name = document.getElementById("imię").value;
+            const _surname = document.getElementById("nazwisko").value;
+            const _age = document.getElementById("wiek").value;
+            const _phone = document.getElementById("telefon").value;
+            const _email = document.getElementById("email").value;
+            const _sex = document.querySelector('input[name="płeć"]:checked')?.value;
+            const _interests = [];
+            document.querySelectorAll('input[name="zainteresowania"]:checked').forEach((checkbox) => {
+                _interests.push(checkbox.value);
+            });
+            const _subject = document.getElementById('przedmiot').value;
+            const _hour = document.getElementById('godzina').value;
+
+            // Get current data from localStorage or initialize as an empty array
+            let data = JSON.parse(localStorage.getItem("formData")) || [];
+
+            // Add new data to the array
+            data.push({ _name, _surname, _age, _phone, _email, _sex, _interests, _subject, _hour });
+
+            // Save the updated data back to localStorage
+            localStorage.setItem("formData", JSON.stringify(data));
+
+            // Reset the form
+            document.getElementById("formularz").reset();
+
+            if (window.location.pathname.includes("uczestnicy.html")) {
+                loadData();
+            }
+
+            const successPopup = document.getElementById("success-popup");
+            successPopup.style.display = "block";
+            setTimeout(() => {
+                successPopup.style.display = "none";
+            }, 5000);
+        });
+    });
+}
