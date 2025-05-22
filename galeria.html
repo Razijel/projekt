@@ -28,60 +28,97 @@
 
     <main>
         <div id="background"></div>
-        <div class="grid-layout">
-            <figure>
-                <img src="https://picsum.photos/id/43/1280/831.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Bridge at night (monochrome)
-                </figcaption>
-            </figure>
 
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome) Beach during a foggy day (monochrome) Beach during a foggy day
-                    (monochrome) Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
+        <form id="image-form">
+            <label for="image">Wybierz zdjęcie:</label>
+            <input type="file" id="image" accept="image/*" required><br><br>
 
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
-            <figure>
-                <img src="https://picsum.photos/id/44/4272/2848.jpg" alt="Monochrome bridge">
-                <figcaption>
-                    Beach during a foggy day (monochrome)
-                </figcaption>
-            </figure>
+            <label for="description">Opis zdjęcia:</label>
+            <input type="text" id="description" placeholder="Wprowadź opis zdjęcia" required><br><br>
 
-            <figure>
-                <iframe src=https://www.youtube.com/embed/u4ecB57jFhI allowfullscreen alt="Shrimp quartet"></iframe>
-                <figcaption>
-                    Shrimp quartet (shrimped)
-                </figcaption>
-            </figure>
+            <button type="submit">Dodaj zdjęcie</button>
+        </form>
+
+        <h2>Galeria zdjęć</h2>
+
+        <div class="grid-layout" id="gallery"></div>
+
         </div>
+
+        <script>
+            function saveImagesToLocalStorage(images) {
+                localStorage.setItem("galleryImages", JSON.stringify(images));
+            }
+
+            function loadImagesFromLocalStorage() {
+                const data = localStorage.getItem("galleryImages");
+                return data ? JSON.parse(data) : [];
+            }
+
+            // Loading gallery on start
+            window.addEventListener("DOMContentLoaded", () => {
+                const images = loadImagesFromLocalStorage();
+                const gallery = document.getElementById("gallery");
+
+                images.forEach(image => {
+                    const figure = document.createElement("figure");
+                    const img = document.createElement("img");
+                    img.src = image.src;
+                    img.alt = image.description;
+                    const caption = document.createElement("figcaption");
+                    caption.textContent = image.description;
+
+                    figure.appendChild(img);
+                    figure.appendChild(caption);
+                    gallery.appendChild(figure);
+                });
+            });
+
+            document.getElementById("image-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const fileInput = document.getElementById("image");
+                const descInput = document.getElementById("description");
+                const gallery = document.getElementById("gallery");
+
+                const file = fileInput.files[0];
+                const description = descInput.value;
+
+                if (!file) {
+                    alert("Wybierz zdjęcie!");
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const newImage = { src: event.target.result, description };
+
+                    // Loading current pictures and add new ones as the start
+                    const images = loadImagesFromLocalStorage();
+                    images.unshift(newImage);
+                    saveImagesToLocalStorage(images);
+
+                    // Creating element in the gallery
+                    const figure = document.createElement("figure");
+                    const img = document.createElement("img");
+                    img.src = newImage.src;
+                    img.alt = newImage.description;
+                    const caption = document.createElement("figcaption");
+                    caption.textContent = newImage.description;
+
+                    figure.appendChild(img);
+                    figure.appendChild(caption);
+
+                    gallery.insertBefore(figure, gallery.firstChild);
+
+                    // Cleaning the form
+                    fileInput.value = '';
+                    descInput.value = '';
+                };
+
+                reader.readAsDataURL(file);
+            });
+        </script>
     </main>
     <footer>&#169 Wszystkie prawa zastrzeżone</footer>
 </body>

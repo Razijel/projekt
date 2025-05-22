@@ -99,8 +99,8 @@
                 });
             }
 
-            let lastSortedColumn = -1;  // Track the last sorted column index
-            let lastSortOrder = 'asc';  // Track the last sort order
+            let lastSortedColumn = -1; // Track the last sorted column index
+            let lastSortOrder = 'asc'; // Track the last sort order
 
             function sortTable(columnIndex, isNumeric = false) {
                 const table = document.getElementById("uczestnicy-tabela");
@@ -111,7 +111,7 @@
                 if (lastSortedColumn === columnIndex) {
                     lastSortOrder = lastSortOrder === 'asc' ? 'desc' : 'asc';  // Toggle sort order
                 } else {
-                    lastSortOrder = 'asc';  // Default to ascending order for new column
+                    lastSortOrder = 'asc'; // Default to ascending order for new column
                 }
 
                 // Remove sort classes from all headers
@@ -198,7 +198,7 @@
                 const rows = document.getElementById("uczestnicy-tabela").rows;
 
                 Array.from(rows).forEach((row, index) => {
-                    if (index === 0) return;  // Skip the header row
+                    if (index === 0) return; // Skip the header row
 
                     let isMatch = false;
 
@@ -206,8 +206,8 @@
                     for (let i = 0; i < row.cells.length; i++) {
                         const cellText = row.cells[i].textContent.toLowerCase();
                         if (cellText.includes(filterText)) {
-                            isMatch = true;  // If any cell matches, mark this row as a match
-                            break;  // No need to check further columns for this row
+                            isMatch = true; // If any cell matches, mark this row as a match
+                            break; // No need to check further columns for this row
                         }
                     }
 
