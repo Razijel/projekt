@@ -607,3 +607,25 @@ th.sorted-desc::after {
     height: 100%;
     transition: opacity 1s ease-in-out;
 }
+
+/* *************************************************************************** */
+/* ************************ Article content styling ************************** */
+/* *************************************************************************** */
+article ol li {
+    list-style: decimal;
+    margin-left: 20px;
+    font-size: 1.05em;
+    font-weight: bold;
+}
+
+article ol p {
+    margin-left: 20px;
+    font-size: 1em;
+}
+
+article ol ul li {
+    margin-left: 40px;
+    font-size: 1em;
+    list-style-type: disc;
+    font-weight: 200;
+}
