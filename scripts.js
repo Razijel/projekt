@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentImage = 0;
 
     function updateBackgroundImage() {
-        const backgroundElement = document.getElementById('background');
+        const backgroundElement = document.getElementById("background");
 
-        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
         const gradient = isDarkMode
-            ? 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))'
-            : 'linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7))';
+            ? "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))"
+            : "linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7))";
 
         backgroundElement.style.backgroundImage = `${gradient}, url('${images[currentImage]}')`;
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(changeBackgroundImage, 10000);
     };
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
         updateBackgroundImage();
     });
     console.log("Background is loaded!");
@@ -65,8 +65,8 @@ if (window.location.pathname === "formularz.html" && document.querySelector("#fo
             document.querySelectorAll('input[name="zainteresowania"]:checked').forEach((checkbox) => {
                 _interests.push(checkbox.value);
             });
-            const _subject = document.getElementById('przedmiot').value;
-            const _hour = document.getElementById('godzina').value;
+            const _subject = document.getElementById("przedmiot").value;
+            const _hour = document.getElementById("godzina").value;
 
             // Get current data from localStorage or initialize as an empty array
             let data = JSON.parse(localStorage.getItem("formData")) || [];
