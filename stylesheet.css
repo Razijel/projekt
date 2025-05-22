@@ -623,7 +623,7 @@ article ol p {
     font-size: 1em;
 }
 
-article ol ul li {
+article ol ul li, details ul li {
     margin-left: 40px;
     font-size: 1em;
     list-style-type: disc;
